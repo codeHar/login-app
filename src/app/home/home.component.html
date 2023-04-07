@@ -1,1 +1,23 @@
-<p>home works!</p>
+<div class="flex h-full">
+    <div class="col-2">
+        <div class="flex flex-column cursor-pointer">
+            <div class="col-12" *ngFor="let menu of menus">
+                <div class="flex align-items-center justify-content-center h-150 border-round-lg bs"
+                    (click)="menu.action()">
+                    <h3>{{menu.name}}</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="col-10">
+        <div class="col-12 h-full">
+            <div class="bs-2 border-round-lg p-3 h-full">
+                {{data}}
+            </div>
+        </div>
+
+    </div>
+
+</div>

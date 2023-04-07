@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { MessageService } from 'primeng/api';
 import { AuthService } from '../services/auth.service';
 import { FormValidatorService } from '../services/form-validator.service';
@@ -16,7 +17,8 @@ export class LoginComponent {
     private fb: FormBuilder,
     private _formValidatorService: FormValidatorService,
     private _authService: AuthService,
-    private msgService: MessageService
+    private msgService: MessageService,
+    private _router:Router
   ) {}
 
   ngOnInit() {
@@ -52,6 +54,7 @@ export class LoginComponent {
         summary: 'Log In',
         detail: 'Logged In Successfully',
       });
+      this._router.navigate(['/home'])
       console.log(res);
     } catch (err) {
       console.log(err);

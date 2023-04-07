@@ -33,4 +33,48 @@ export class AuthService {
       }
     });
   }
+
+  getAllData() {
+    return new Promise(async (resolve, reject) => {
+      try {
+        const res: any = await this.apiService.getAllData();
+        resolve(res);
+      } catch (err) {
+        reject(err);
+      }
+    });
+  }
+
+  getModeratorData() {
+    return new Promise(async (resolve, reject) => {
+      try {
+        const res: any = await this.apiService.getModeratorData();
+        resolve(res);
+      } catch (err) {
+        reject(err);
+      }
+    });
+  }
+
+  getUserData() {
+    return new Promise(async (resolve, reject) => {
+      try {
+        const res: any = await this.apiService.getUserData();
+        resolve(res);
+      } catch (err) {
+        reject(err);
+      }
+    });
+  }
+
+  getAdminData() {
+    return new Promise(async (resolve, reject) => {
+      try {
+        const res: any = await this.apiService.getAdminData();
+        resolve(res);
+      } catch (err) {
+        reject(err);
+      }
+    });
+  }
 }
