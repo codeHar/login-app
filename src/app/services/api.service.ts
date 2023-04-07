@@ -6,11 +6,6 @@ import { first, firstValueFrom } from 'rxjs';
   providedIn: 'root',
 })
 export class ApiService {
-  headers = new HttpHeaders().set(
-    'x-access-token',
-    localStorage.getItem('user')!
-  );
-
   constructor(private http: HttpClient) {}
 
   login(data: any) {
@@ -26,33 +21,49 @@ export class ApiService {
   }
 
   getAllData() {
+    let headers = new HttpHeaders().set(
+      'x-access-token',
+      localStorage.getItem('user')!
+    );
     return firstValueFrom(
       this.http.get('http://localhost:8080/api/test/all', {
-        headers: this.headers,
+        headers: headers,
       })
     );
   }
 
   getModeratorData() {
+    let headers = new HttpHeaders().set(
+      'x-access-token',
+      localStorage.getItem('user')!
+    );
     return firstValueFrom(
-      this.http.get('http://localhost:8080/api/test/moderator', {
-        headers: this.headers,
+      this.http.get('http://localhost:8080/api/test/mod', {
+        headers: headers,
       })
     );
   }
 
   getUserData() {
+    let headers = new HttpHeaders().set(
+      'x-access-token',
+      localStorage.getItem('user')!
+    );
     return firstValueFrom(
       this.http.get('http://localhost:8080/api/test/user', {
-        headers: this.headers,
+        headers: headers,
       })
     );
   }
 
   getAdminData() {
+    let headers = new HttpHeaders().set(
+      'x-access-token',
+      localStorage.getItem('user')!
+    );
     return firstValueFrom(
       this.http.get('http://localhost:8080/api/test/admin', {
-        headers: this.headers,
+        headers: headers,
       })
     );
   }

@@ -11,7 +11,6 @@ export class AuthService {
     return new Promise(async (resolve, reject) => {
       try {
         const res: any = await this.apiService.login(data);
-        debugger;
         if (res.status == 200) {
           localStorage.setItem('user', res.accessToken);
           resolve(res);
@@ -39,7 +38,7 @@ export class AuthService {
     return new Promise(async (resolve, reject) => {
       try {
         const res: any = await this.apiService.getAllData();
-        resolve(res);
+        resolve(res.message);
       } catch (err) {
         reject(err);
       }
@@ -50,7 +49,7 @@ export class AuthService {
     return new Promise(async (resolve, reject) => {
       try {
         const res: any = await this.apiService.getModeratorData();
-        resolve(res);
+        resolve(res.message);
       } catch (err) {
         reject(err);
       }
@@ -61,7 +60,7 @@ export class AuthService {
     return new Promise(async (resolve, reject) => {
       try {
         const res: any = await this.apiService.getUserData();
-        resolve(res);
+        resolve(res.message);
       } catch (err) {
         reject(err);
       }
@@ -72,7 +71,7 @@ export class AuthService {
     return new Promise(async (resolve, reject) => {
       try {
         const res: any = await this.apiService.getAdminData();
-        resolve(res);
+        resolve(res.message);
       } catch (err) {
         reject(err);
       }
