@@ -11,8 +11,9 @@ export class AuthService {
     return new Promise(async (resolve, reject) => {
       try {
         const res: any = await this.apiService.login(data);
+        debugger;
         if (res.status == 200) {
-          localStorage.setItem('user', res.body);
+          localStorage.setItem('user', res.accessToken);
           resolve(res);
         } else {
           throw new Error(res?.body);

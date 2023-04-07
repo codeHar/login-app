@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 
+import { NgxCaptchaModule } from 'ngx-captcha'; //<== captcha module
 import { InputTextModule } from 'primeng/inputtext';
 import { ButtonModule } from 'primeng/button';
 import { HttpClientModule } from '@angular/common/http';
@@ -17,7 +18,12 @@ import { DropdownModule } from 'primeng/dropdown';
 import { HomeComponent } from './home/home.component';
 
 @NgModule({
-  declarations: [AppComponent, LoginComponent, RegisterComponent, HomeComponent],
+  declarations: [
+    AppComponent,
+    LoginComponent,
+    RegisterComponent,
+    HomeComponent,
+  ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -29,6 +35,8 @@ import { HomeComponent } from './home/home.component';
     HttpClientModule,
     ToastModule,
     DropdownModule,
+    ReactiveFormsModule, //<== for reactive forms
+    NgxCaptchaModule, //<== for captcha
   ],
   providers: [MessageService],
   bootstrap: [AppComponent],

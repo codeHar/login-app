@@ -27,7 +27,7 @@ export class ApiService {
 
   getAllData() {
     return firstValueFrom(
-      this.http.get('https://jsonplaceholder.typicode.com/posts/1', {
+      this.http.get('http://localhost:8080/api/test/all', {
         headers: this.headers,
       })
     );
@@ -35,7 +35,7 @@ export class ApiService {
 
   getModeratorData() {
     return firstValueFrom(
-      this.http.get('https://jsonplaceholder.typicode.com/posts/1', {
+      this.http.get('http://localhost:8080/api/test/moderator', {
         headers: this.headers,
       })
     );
@@ -43,7 +43,7 @@ export class ApiService {
 
   getUserData() {
     return firstValueFrom(
-      this.http.get('https://jsonplaceholder.typicode.com/posts/1', {
+      this.http.get('http://localhost:8080/api/test/user', {
         headers: this.headers,
       })
     );
@@ -51,7 +51,7 @@ export class ApiService {
 
   getAdminData() {
     return firstValueFrom(
-      this.http.get('https://jsonplaceholder.typicode.com/posts/1', {
+      this.http.get('http://localhost:8080/api/test/admin', {
         headers: this.headers,
       })
     );

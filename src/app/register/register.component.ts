@@ -20,15 +20,16 @@ export class RegisterComponent {
     private _formValidatorService: FormValidatorService,
     private _authService: AuthService,
     private msgService: MessageService,
-    private _router:Router
+    private _router: Router
   ) {}
 
   ngOnInit() {
     this.loginForm = this.fb.group({
       username: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required,Validators.minLength(5)]],
+      password: ['', [Validators.required, Validators.minLength(5)]],
       roles: ['User', Validators.required],
+      recaptcha: ['', Validators.required],
     });
   }
 
@@ -57,7 +58,7 @@ export class RegisterComponent {
         summary: 'Register',
         detail: 'User registered successfully',
       });
-      this._router.navigate(['/login'])
+      this._router.navigate(['/login']);
     } catch (err) {
       console.log(err);
       this.msgService.add({

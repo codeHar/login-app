@@ -18,13 +18,14 @@ export class LoginComponent {
     private _formValidatorService: FormValidatorService,
     private _authService: AuthService,
     private msgService: MessageService,
-    private _router:Router
+    private _router: Router
   ) {}
 
   ngOnInit() {
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required]],
+      recaptcha: ['', [Validators.required]],
     });
   }
 
@@ -41,6 +42,32 @@ export class LoginComponent {
     }
   }
 
+  // import { FormGroup, Validators, FormControl } from '@angular/forms';
+
+  // @Component({
+  //   selector: 'app-root',
+  //   templateUrl: './app.component.html',
+  //   styleUrls: ['./app.component.css'],
+  // })
+  // export class AppComponent {
+  //   loginForm: FormGroup;
+
+  //   constructor() {
+  //     this.loginForm = new FormGroup({
+  //       email: new FormControl('', [Validators.required, Validators.email]),
+  //       password: new FormControl('', [
+  //         Validators.required,
+  //         Validators.minLength(6),
+  //       ]),
+  //       recaptcha: new FormControl('', [Validators.required]),
+  //     });
+  //   }
+
+  //   signIn = () => {
+  //     // do whatever you want here
+  //   };
+  // }
+
   async login() {
     try {
       let data: any = {
@@ -54,7 +81,7 @@ export class LoginComponent {
         summary: 'Log In',
         detail: 'Logged In Successfully',
       });
-      this._router.navigate(['/home'])
+      this._router.navigate(['/home']);
       console.log(res);
     } catch (err) {
       console.log(err);
