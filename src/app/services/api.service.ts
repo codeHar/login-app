@@ -10,7 +10,7 @@ export class ApiService {
 
   login(data: any) {
     return firstValueFrom(
-      this.http.get('https://jsonplaceholder.typicode.com/posts/1')
+      this.http.post('https://jsonplaceholder.typicode.com/posts/1', data)
     );
   }
 

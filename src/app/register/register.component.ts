@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { MessageService } from 'primeng/api';
 import { AuthService } from '../services/auth.service';
 import { FormValidatorService } from '../services/form-validator.service';
@@ -12,18 +13,22 @@ import { FormValidatorService } from '../services/form-validator.service';
 export class RegisterComponent {
   loginForm!: FormGroup;
 
+  roles = ['User', 'Moderator', 'Admin'];
+
   constructor(
     private fb: FormBuilder,
     private _formValidatorService: FormValidatorService,
     private _authService: AuthService,
-    private msgService: MessageService
+    private msgService: MessageService,
+    private _router:Router
   ) {}
 
   ngOnInit() {
     this.loginForm = this.fb.group({
       username: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required]],
+      password: ['', [Validators.required,Validators.minLength(5)]],
+      roles: ['User', Validators.required],
     });
   }
 
@@ -42,6 +47,7 @@ export class RegisterComponent {
         username: this.f['username'].value,
         email: this.f['email'].value,
         password: this.f['password'].value,
+        roles: [String(this.f['roles'].value).toLowerCase()],
       };
 
       let res = await this._authService.register(data);
@@ -51,7 +57,7 @@ export class RegisterComponent {
         summary: 'Register',
         detail: 'User registered successfully',
       });
-      console.log(res);
+      this._router.navigate(['/login'])
     } catch (err) {
       console.log(err);
       this.msgService.add({

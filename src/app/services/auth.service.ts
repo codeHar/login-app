@@ -10,10 +10,15 @@ export class AuthService {
   login(data: any) {
     return new Promise(async (resolve, reject) => {
       try {
-        const res = this.apiService.login(data);
-        resolve(res);
-      } catch (err) {
-        reject(err);
+        const res: any = await this.apiService.login(data);
+        if (res.status == 200) {
+          localStorage.setItem('user', res.body);
+          resolve(res);
+        } else {
+          throw new Error(res?.body);
+        }
+      } catch (err: any) {
+        reject(err.message || 'Error');
       }
     });
   }
@@ -21,7 +26,7 @@ export class AuthService {
   register(data: any) {
     return new Promise(async (resolve, reject) => {
       try {
-        const res = this.apiService.register(data);
+        const res: any = await this.apiService.register(data);
         resolve(res);
       } catch (err) {
         reject(err);

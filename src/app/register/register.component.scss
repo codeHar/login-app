@@ -5,3 +5,9 @@
     justify-content: center;
     align-items: center;
 }
+
+:host ::ng-deep {
+    .p-dropdown {
+        width: 100% !important;
+    }
+}

@@ -1,8 +1,8 @@
-<div class="col-10 md:col-5 lg:col-4 xl:col-3 p-3 border-1 border-gray-300 border-round-lg">
-    <h1 class="text-center my-5">Register</h1>
+<div class="col-10 md:col-6 lg:col-5 xl:col-4 p-3 border-1 border-gray-300 border-round-lg">
+    <h1 class="text-center mt-5 mb-7">Register</h1>
     <form [formGroup]="loginForm">
         <div class="form-grid grid">
-            <div class="col-12 field mb-3">
+            <div class="col-12 field mb-2">
                 <label class="w-full mb-2">User Name:</label>
                 <input class="w-full" pInputText type="text" formControlName="username" />
 
@@ -11,7 +11,7 @@
                 </div>
             </div>
 
-            <div class="col-12 field mb-3">
+            <div class="col-12 field mb-2">
                 <label class="w-full mb-2">Email:</label>
                 <input class="w-full" pInputText type="email" formControlName="email" />
 
@@ -23,13 +23,21 @@
                 </div>
             </div>
 
-            <div class="col-12 field mb-3">
+            <div class="col-12 field mb-2">
                 <label class="w-full mb-2">Password:</label>
                 <input class="w-full" pInputText type="password" formControlName="password" />
 
                 <div class="text-red-500 mt-1" *ngIf="checkControlError('password', 'required')">
                     Password is required
                 </div>
+                <div class="text-red-500 mt-1" *ngIf="checkControlError('password', 'minlength')">
+                    Minimum 5 characters required
+                </div>
+            </div>
+
+            <div class="col-12 field mb-2">
+                <p-dropdown class="w-full" [options]="roles" formControlName="roles"></p-dropdown>
+
             </div>
 
         </div>
